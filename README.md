@@ -7,6 +7,8 @@ window of git rebase interactive.
 When you move text-cursor in `git-rebase-todo` file, `auto-git-diff` gets
 a commit hash of the line where the cursor exists and update the diff window.
 
+![sample_image](https://cloud.githubusercontent.com/assets/359226/11892093/3e9c3a24-a5a8-11e5-81de-e9730aa2fa73.png)
+
 ## Variables
 
  - `g:auto_git_diff_disable_auto_update` 
