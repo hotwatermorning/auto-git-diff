@@ -4,8 +4,8 @@ Show git diff for Git Rebase Interactive
 Show git diff between each commit and its parent below the commit list
 window of git rebase interactive.
 
-When you move text-cursor in git-rebase-todo file, auto-git-diff.vim gets
-a commit hash of the line where cursor exists and update the diff window.
+When you move text-cursor in `git-rebase-todo` file, `auto-git-diff` gets
+a commit hash of the line where the cursor exists and update the diff window.
 
 ## Variables
 
