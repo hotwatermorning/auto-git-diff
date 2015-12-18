@@ -13,7 +13,7 @@ a commit hash of the line where the cursor exists and update the diff window.
 
  - `g:auto_git_diff_disable_auto_update` 
 
-If the value is set to 1, the diff window won't updated automatically. You
+If the value is set to 1, the diff window won't update automatically. You
 can update the diff window manually with the command: `:call
 <Plug>(auto_git_diff_manual_update)`.
 
