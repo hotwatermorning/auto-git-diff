@@ -26,7 +26,6 @@ endfunction
 " Execute git diff between hash~1 and hash with options a:opts,
 " and show the result into the preview window.
 function! s:show_git_diff_impl(hash, vertsplit, opts)
-    echo "show git diff impl"
 
     let last_wn = bufwinnr('%')
     let wn = s:find_preview_window()
@@ -66,7 +65,6 @@ function! s:show_git_diff_impl(hash, vertsplit, opts)
 endfunction
 
 function! auto_git_diff#show_git_diff()
-    echo "show git diff"
 
     let hash_string = s:get_git_hash()
     if hash_string == ""
@@ -83,7 +81,6 @@ endfunction
 
 " Called when text-cursor is moved.
 function! auto_git_diff#auto_update_git_diff()
-    echo "auto update git diff"
 
     if get(g:, "auto_git_diff_disable_auto_update", 0)
         return
