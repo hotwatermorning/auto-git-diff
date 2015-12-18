@@ -1,4 +1,4 @@
-Show git diff for Git Rebase Intractive
+Show git diff for Git Rebase Interactive
 =======================================
 
 Show git diff between each commit and its parent below the commit list
