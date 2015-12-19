@@ -33,7 +33,7 @@ Options passed to `git diff` command. If the variable is not defined,
  - `<Plug>(auto_git_diff_manual_update)`
 
 Key mapping to update diff window manully. Example:
-`:nmap <Leader>gd <Plug>(auto_diff_manual_update)`
+`:nmap <Leader>gd <Plug>(auto_git_diff_manual_update)`
 
 ## License
 
