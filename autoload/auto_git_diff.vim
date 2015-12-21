@@ -86,6 +86,10 @@ function! auto_git_diff#auto_update_git_diff()
         return
     endif
 
+    if mode() != "n"
+        return
+    endif
+
     call auto_git_diff#show_git_diff()
 endfunction
 
