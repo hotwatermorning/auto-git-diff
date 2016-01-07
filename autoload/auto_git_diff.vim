@@ -49,7 +49,7 @@ function! s:show_git_diff_impl(hash, vertsplit, opts)
         silent execute wn."wincmd w"
     endif
 
-    let diff_command="git diff ".a:opts." ".a:hash."~1 ".a:hash"
+    let diff_command="git diff ".a:opts." ".a:hash."~1 ".a:hash
 
     setlocal modifiable
 
