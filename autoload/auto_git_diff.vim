@@ -57,7 +57,12 @@ function! s:show_git_diff_impl(hash, vertsplit, opts)
     " Clear preview window
     exe "normal! ggVG\"_d"
 
-    exe "normal! :0r!LANG=C ".diff_command."\<CR>1G0"
+    if has("win32")
+        exe "normal! :0r!set LANG=C & ".diff_command."\<CR>1G0"
+    else
+        exe "normal! :0r!LANG=C ".diff_command."\<CR>1G0"
+    endif
+
     setlocal nomodifiable
 
     noremap <buffer> q :bw<cr>
