@@ -49,14 +49,14 @@ function! s:show_git_diff_impl(hash, vertsplit, opts)
         silent execute wn."wincmd w"
     endif
 
-    let diff_command="git diff ".a:opts." ".a:hash."~1 ".a:hash"
+    let diff_command="git diff ".a:opts." ".a:hash."~1 ".a:hash
 
     setlocal modifiable
 
     " Clear preview window
-    exe "normal ggVG\"_d"
+    exe "normal! ggVG\"_d"
 
-    exe "normal :0r!LANG=C ".diff_command." \no\<esc>1G0"
+    exe "normal! :0r!LANG=C ".diff_command."\<CR>1G0"
     setlocal nomodifiable
 
     noremap <buffer> q :bw<cr>
