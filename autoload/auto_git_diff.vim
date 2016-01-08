@@ -1,4 +1,5 @@
 let s:save_cpo = &cpo
+let s:previous_hash_string = ""
 set cpo&vim
 
 setlocal nowarn nowb
@@ -67,8 +68,10 @@ endfunction
 function! auto_git_diff#show_git_diff()
 
     let hash_string = s:get_git_hash()
-    if hash_string == ""
-        return
+    if hash_string == "" || hash_string == s:previous_hash_string
+      return
+    else
+      let s:previous_hash_string = hash_string
     endif
 
     let s:auto_git_diff_show_window_at_right = get(g:, "auto_git_diff_show_window_at_right", 0)
