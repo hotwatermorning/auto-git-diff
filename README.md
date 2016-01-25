@@ -1,10 +1,10 @@
 Show git diff for Git Rebase Interactive
 =======================================
 
-Show git diff between each commit and its parent below the commit list
-window of git rebase interactive.
+`auto-git-diff` is a vim plugin which shows git diff between each commit and
+its parent commit below the commit list window of git rebase interactive.
 
-When you move text-cursor in `git-rebase-todo` file, `auto-git-diff` gets
+When you move a text-cursor in `git-rebase-todo` file, `auto-git-diff` gets
 a commit hash of the line where the cursor exists and update the diff window.
 
 ![sample_image](https://cloud.githubusercontent.com/assets/359226/11892093/3e9c3a24-a5a8-11e5-81de-e9730aa2fa73.png)
