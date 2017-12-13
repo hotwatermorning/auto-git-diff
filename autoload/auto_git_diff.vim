@@ -6,13 +6,13 @@ nnoremap <silent> <Plug>(auto_git_diff_manual_update) :<C-u>call auto_git_diff#s
 
 " Get commit hash from current line.
 " The first colomn(pick, r, ...) can be empty.
-function! s:get_git_hash()
+function! s:get_git_hash() abort
     return matchstr(getline('.'), '^\(\w\+\>\)\=\(\s*\)\zs\x\{4,40\}\>\ze')
 endfunction
 
 " Find the preview window.
 " If not found, return zero.
-function! s:find_preview_window()
+function! s:find_preview_window() abort
     for nr in range(1, winnr('$'))
         if getwinvar(nr, "&pvw") == 1
             " found a preview
@@ -24,7 +24,7 @@ endfunction
 
 " Execute git diff between hash~1 and hash with options a:opts,
 " and show the result into the preview window.
-function! s:show_git_diff_impl(hash, vertsplit, opts)
+function! s:show_git_diff_impl(hash, vertsplit, opts) abort
 
     let last_wn = bufwinnr('%')
     let wn = s:find_preview_window()
@@ -70,7 +70,7 @@ function! s:show_git_diff_impl(hash, vertsplit, opts)
     silent execute "wincmd p"
 endfunction
 
-function! auto_git_diff#show_git_diff()
+function! auto_git_diff#show_git_diff() abort
 
     let hash_string = s:get_git_hash()
     if hash_string == "" || hash_string == s:previous_hash_string
@@ -86,7 +86,7 @@ function! auto_git_diff#show_git_diff()
 endfunction
 
 " Called when text-cursor is moved.
-function! auto_git_diff#auto_update_git_diff()
+function! auto_git_diff#auto_update_git_diff() abort
 
     if get(g:, "auto_git_diff_disable_auto_update", 0)
         return
