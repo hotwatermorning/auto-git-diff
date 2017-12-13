@@ -2,8 +2,6 @@ let s:save_cpo = &cpo
 let s:previous_hash_string = ""
 set cpo&vim
 
-setlocal nowarn nowb
-
 nnoremap <silent> <Plug>(auto_git_diff_manual_update) :<C-u>call auto_git_diff#show_git_diff()<CR>
 
 " Get commit hash from current line.
