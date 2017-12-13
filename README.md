@@ -7,7 +7,8 @@ its parent commit below the commit list window of git rebase interactive.
 When you move a text-cursor in `git-rebase-todo` file, `auto-git-diff` gets
 a commit hash of the line where the cursor exists and update the diff window.
 
-![sample_image](https://cloud.githubusercontent.com/assets/359226/11892093/3e9c3a24-a5a8-11e5-81de-e9730aa2fa73.png)
+
+![sample_image](https://user-images.githubusercontent.com/359226/33921582-2319e7a0-e008-11e7-8be3-ba9f68a78217.gif)
 
 ## Variables
 
