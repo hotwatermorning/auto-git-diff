@@ -79,11 +79,9 @@ function! auto_git_diff#show_git_diff()
       let s:previous_hash_string = hash_string
     endif
 
-    let s:auto_git_diff_show_window_at_right = get(g:, "auto_git_diff_show_window_at_right", 0)
-    let s:auto_git_diff_command_options = get(g:, "auto_git_diff_command_options", "--stat -p --submodule -C -C")
     call s:show_git_diff_impl(  s:get_git_hash()
-\                               , s:auto_git_diff_show_window_at_right
-\                               , s:auto_git_diff_command_options
+\                               , get(g:, "auto_git_diff_show_window_at_right", 0)
+\                               , get(g:, "auto_git_diff_command_options", "--stat -p --submodule -C -C")
 \                               )
 endfunction
 
