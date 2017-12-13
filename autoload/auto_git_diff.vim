@@ -50,18 +50,18 @@ function! s:show_git_diff_impl(hash, vertsplit, opts)
         silent execute wn."wincmd w"
     endif
 
-    let diff_command="git diff ".a:opts." ".a:hash."~1 ".a:hash
+    let diff_command = "git diff ".a:opts." ".a:hash."~1 ".a:hash
+    let prefix = has("win32") ? "set LANG=C & " : "LANG=C "
 
     setlocal modifiable
 
-    " Clear preview window
-    exe "normal! ggVG\"_d"
+    redir => out
+        execute 'silent! echo system("'.prefix.diff_command.'")'
+    redir END
 
-    if has("win32")
-        exe "normal! :0r!set LANG=C & ".diff_command."\<CR>1G0"
-    else
-        exe "normal! :0r!LANG=C ".diff_command."\<CR>1G0"
-    endif
+    silent! % delete _
+    silent! $ put=out
+    silent! 1,2 delete _
 
     setlocal nomodifiable
 
