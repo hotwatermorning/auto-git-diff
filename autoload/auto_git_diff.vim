@@ -55,13 +55,15 @@ function! s:show_git_diff_impl(hash, vertsplit, opts)
 
     setlocal modifiable
 
-    redir => out
-        execute 'silent! echo system("'.prefix.diff_command.'")'
-    redir END
+    let out = system(prefix.diff_command)
+    if v:shell_error
+        echohl ErrorMsg | echom 'Could not open diff preview:'.out | echohl None
+        return
+    endif
 
     silent! % delete _
     silent! $ put=out
-    silent! 1,2 delete _
+    silent! 1 delete _
 
     setlocal nomodifiable
 
