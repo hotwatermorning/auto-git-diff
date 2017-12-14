@@ -99,6 +99,16 @@ function! auto_git_diff#auto_update_git_diff() abort
     call auto_git_diff#show_git_diff()
 endfunction
 
+function! auto_git_diff#scroll_in_preview_window(map) abort
+    if s:find_preview_window() == 0
+        return
+    endif
+    wincmd P
+    sandbox let input = eval('"\<'.a:map.'>"')
+    execute "normal!" input
+    wincmd p
+endfunction
+
 let &cpo = s:save_cpo
 unlet s:save_cpo
 
