@@ -39,7 +39,7 @@ function! s:show_git_diff_impl(hash, vertsplit, opts) abort
             rightbelow new
         endif
 
-        silent! setlocal ft=diff previewwindow bufhidden=delete nobackup noswf nobuflisted nowrap buftype=nofile
+        silent! setlocal previewwindow bufhidden=delete nobackup noswf nobuflisted nowrap buftype=nofile
 
         let wn = bufwinnr('%')
     else
@@ -50,14 +50,15 @@ function! s:show_git_diff_impl(hash, vertsplit, opts) abort
 
     let diff_command = "git diff ".a:opts." ".a:hash."~1 ".a:hash
     let prefix = has("win32") ? "set LANG=C & " : "LANG=C "
+    silent let out = system(prefix.diff_command)
+
+    if v:shell_error
+        setlocal ft=
+    else
+        setlocal ft=diff
+    endif
 
     setlocal modifiable
-
-    let out = system(prefix.diff_command)
-    if v:shell_error
-        echohl ErrorMsg | echom 'Could not open diff preview:'.out | echohl None
-        return
-    endif
 
     silent! % delete _
     silent! $ put=out
