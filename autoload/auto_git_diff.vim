@@ -26,7 +26,6 @@ endfunction
 " and show the result into the preview window.
 function! s:show_git_diff_impl(hash, vertsplit, opts) abort
 
-    let last_wn = bufwinnr('%')
     let wn = s:find_preview_window()
 
     if wn == 0
@@ -68,7 +67,7 @@ function! s:show_git_diff_impl(hash, vertsplit, opts) abort
 
     noremap <buffer> q :bw<cr>
 
-    silent execute "wincmd p"
+    silent wincmd p
 endfunction
 
 function! auto_git_diff#show_git_diff() abort
