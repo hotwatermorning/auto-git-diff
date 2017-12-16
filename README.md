@@ -36,6 +36,29 @@ Options passed to `git diff` command. If the variable is not defined,
 Key mapping to update diff window manully. Example:
 `:nmap <Leader>gd <Plug>(auto_git_diff_manual_update)`
 
+ - `<Plug>(auto_git_diff_scroll_down_1)`
+ - `<Plug>(auto_git_diff_scroll_up_1)`
+ - `<Plug>(auto_git_diff_scroll_down_half)`
+ - `<Plug>(auto_git_diff_scroll_up_half)`
+ - `<Plug>(auto_git_diff_scroll_down_page)`
+ - `<Plug>(auto_git_diff_scroll_up_page)`
+
+These key mappings scroll the diff window without moving the cursor into the
+window. `_1` means scrolling one line (`<C-e>` or `<C-y>`), `_half` means
+scrolling half a page (`<C-d>` or `<C-u>`) and `_page` means scrolling one page
+(`<C-f>` or `<C-b>`).
+
+Following is an example to configure the mappings in your `vimrc`.
+
+```vim
+function! s:setup_auto_git_diff() abort
+    nmap <buffer><C-l> <Plug>(auto_git_diff_scroll_manual_update)
+    nmap <buffer><C-n> <Plug>(auto_git_diff_scroll_down_half)
+    nmap <buffer><C-p> <Plug>(auto_git_diff_scroll_up_half)
+endfunction
+autocmd FileType gitrebase call <SID>setup_auto_git_diff()
+```
+
 ## License
 
     The MIT License (MIT)
