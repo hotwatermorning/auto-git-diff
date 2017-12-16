@@ -12,29 +12,27 @@ a commit hash of the line where the cursor exists and update the diff window.
 
 ## Variables
 
- - `g:auto_git_diff_disable_auto_update` 
+ - `g:auto_git_diff_disable_auto_update`
 
-If the value is set to 1, the diff window won't update automatically. You
-can update the diff window manually with following keymapping: 
+If this variable is set to 1, the diff window won't update automatically. You
+can update the diff window manually with the following key mapping:
 `<Plug>(auto_git_diff_manual_update)`.
 
  - `g:auto_git_diff_show_window_at_right`
 
-If the value is set to 1, the diff window will be created at right on the
+If this variable is set to 1, the diff window will be created at right on the
 commit list window.
 
  - `g:auto_git_diff_command_options`
 
-Options passed to `git diff` command. If the variable is not defined,
-`--stat -p --submodule -C -C` will be
-   used.
+The options passed to `git diff` command. If this variable is not defined,
+`--stat -p --submodule -C -C` will be used.
 
 ## Mappings
 
  - `<Plug>(auto_git_diff_manual_update)`
 
-Key mapping to update diff window manully. Example:
-`:nmap <Leader>gd <Plug>(auto_git_diff_manual_update)`
+This key mapping updates the diff window manully.
 
  - `<Plug>(auto_git_diff_scroll_down_1)`
  - `<Plug>(auto_git_diff_scroll_up_1)`
