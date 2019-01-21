@@ -76,6 +76,7 @@ function! s:get_git_diff(hash, opts) abort
     if !v:shell_error
         return out
     endif
+    let save_out = out
 
     let empty_tree_sha1_hex = "4b825dc642cb6eb9a060e54bf8d69288fbee4904"
     let diff_command = "git diff ".a:opts." ".empty_tree_sha1_hex." ".a:hash
@@ -84,7 +85,7 @@ function! s:get_git_diff(hash, opts) abort
         return out
     endif
 
-    return ""
+    return save_out
 endfunction
 
 function! auto_git_diff#show_git_diff() abort
