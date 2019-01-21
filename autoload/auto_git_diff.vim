@@ -47,9 +47,7 @@ function! s:show_git_diff_impl(hash, vertsplit, opts) abort
         silent execute wn."wincmd w"
     endif
 
-    let diff_command = "git diff ".a:opts." ".a:hash."~1 ".a:hash
-    let prefix = has("win32") ? "set LANG=C & " : "LANG=C "
-    silent let out = system(prefix.diff_command)
+    let out = s:get_git_diff(a:hash, a:opts)
 
     if v:shell_error
         setlocal ft=
@@ -68,6 +66,26 @@ function! s:show_git_diff_impl(hash, vertsplit, opts) abort
     noremap <buffer> q :bw<cr>
 
     silent wincmd p
+endfunction
+
+function! s:get_git_diff(hash, opts) abort
+    let prefix = has("win32") ? "set LANG=C & " : "LANG=C "
+
+    let diff_command = "git diff ".a:opts." ".a:hash."~1 ".a:hash
+    silent let out = system(prefix.diff_command)
+    if !v:shell_error
+        return out
+    endif
+    let save_out = out
+
+    let empty_tree_sha1_hex = "4b825dc642cb6eb9a060e54bf8d69288fbee4904"
+    let diff_command = "git diff ".a:opts." ".empty_tree_sha1_hex." ".a:hash
+    silent let out = system(prefix.diff_command)
+    if !v:shell_error
+        return out
+    endif
+
+    return save_out
 endfunction
 
 function! auto_git_diff#show_git_diff() abort
