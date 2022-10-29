@@ -1,52 +1,42 @@
-Show git diff for Git Rebase Interactive
+Show git diff for Git Interactive Rebase
 =======================================
 
-`auto-git-diff` is a vim plugin which shows git diff between each commit and
-its parent commit below the commit list window of git rebase interactive.
+`auto-git-diff` is a vim plugin which enable showing commit diff while processing git interactive rebase.
 
-When you move a text-cursor in `git-rebase-todo` file, `auto-git-diff` gets
-a commit hash of the line where the cursor exists and update the diff window.
-
+When you move the text cursor in the commit list window, this plugin reads the commit hash of the line and show diff of the commit.
 
 ![sample_image](https://user-images.githubusercontent.com/359226/33921582-2319e7a0-e008-11e7-8be3-ba9f68a78217.gif)
 
 ## Variables
 
- - `g:auto_git_diff_disable_auto_update`
+- `g:auto_git_diff_disable_auto_update`
 
-If this variable is set to 1, the diff window won't update automatically. You
-can update the diff window manually with the following key mapping:
-`<Plug>(auto_git_diff_manual_update)`.
+    If this variable is set to 1, the diff window won't be updated automatically. To update the diff window manually, use this key mapping: `<Plug>(auto_git_diff_manual_update)`.
 
- - `g:auto_git_diff_show_window_at_right`
+- `g:auto_git_diff_show_window_at_right`
 
-If this variable is set to 1, the diff window will be created at right on the
-commit list window.
+    If this variable is set to 1, the diff window will be created at right on the commit list window, instead of bottom.
 
- - `g:auto_git_diff_command_options`
+- `g:auto_git_diff_command_options`
 
-The options passed to `git diff` command. If this variable is not defined,
-`--stat -p --submodule -C -C` will be used.
+    The value of this variable will be passed to `git diff` command. If this variable is not defined, `--stat -p --submodule -C -C` will be used.
 
 ## Mappings
 
- - `<Plug>(auto_git_diff_manual_update)`
+- `<Plug>(auto_git_diff_manual_update)`
 
-This key mapping updates the diff window manully.
+    This key mapping triggers update of the diff window. This mapping is used when the diff window's automatic update is disabled.
 
- - `<Plug>(auto_git_diff_scroll_down_1)`
- - `<Plug>(auto_git_diff_scroll_up_1)`
- - `<Plug>(auto_git_diff_scroll_down_half)`
- - `<Plug>(auto_git_diff_scroll_up_half)`
- - `<Plug>(auto_git_diff_scroll_down_page)`
- - `<Plug>(auto_git_diff_scroll_up_page)`
+- `<Plug>(auto_git_diff_scroll_down_1)`
+- `<Plug>(auto_git_diff_scroll_up_1)`
+- `<Plug>(auto_git_diff_scroll_down_half)`
+- `<Plug>(auto_git_diff_scroll_up_half)`
+- `<Plug>(auto_git_diff_scroll_down_page)`
+- `<Plug>(auto_git_diff_scroll_up_page)`
 
-These key mappings scroll the diff window without moving the cursor into the
-window. `_1` means scrolling one line (`<C-e>` or `<C-y>`), `_half` means
-scrolling half a page (`<C-d>` or `<C-u>`) and `_page` means scrolling one page
-(`<C-f>` or `<C-b>`).
+    These key mappings scroll the diff window without moving the cursor into the window. `_1` means scrolling one line (like `<C-e>` or `<C-y>`), `_half` means scrolling half a page (like `<C-d>` or `<C-u>`) and `_page` means scrolling one page (like `<C-f>` or `<C-b>`).
 
-Following is an example to configure the mappings in your `vimrc`.
+This snippet is an example configuration:
 
 ```vim
 function! s:setup_auto_git_diff() abort
